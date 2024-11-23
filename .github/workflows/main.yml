@@ -20,17 +20,21 @@ jobs:
       - name: Show Website
         run: cmd /c show.bat
 
-      # Step 3: Time Counter
+      # Step 3: Time Counter (run in background)
       - name: Time Counter
-        run: cmd /c loop.bat
+        run: start /b loop.bat
 
-      # Step 4: Download Roblox Player Installer
+      # Step 4: Debug Log
+      - name: Log Time Counter Completion
+        run: echo "Time Counter Completed."
+
+      # Step 5: Download Roblox Player Installer
       - name: Download Roblox Player Installer
         run: |
           Invoke-WebRequest -Uri "https://setup.rbxcdn.com/version-8aa36bbf0eb1494a-RobloxPlayerInstaller.exe" -OutFile "RobloxPlayerInstaller.exe"
           dir RobloxPlayerInstaller.exe
 
-      # Step 5: Run Roblox Player Installer
+      # Step 6: Run Roblox Player Installer
       - name: Run Roblox Player Installer
         run: |
           start RobloxPlayerInstaller.exe
